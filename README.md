@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Advent Savings 🎄
 
 Calendario de ahorro de adviento en español. Introduces una cantidad máxima diaria y la app genera
@@ -99,3 +100,7 @@ public/
   Escape, barra de progreso con `role="progressbar"`, mensajes con `role="alert"`/`status`, objetivos
   táctiles de al menos 44 px y respeto de `prefers-reduced-motion` (se desactivan nieve, confeti y
   animaciones).
+=======
+# advent-savings
+App de Ahorro utilizando un Calendario de Adviento
+>>>>>>> 7280a7c296ea7da5a353d3ec0efa044fc844ca1f
