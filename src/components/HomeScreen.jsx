@@ -25,11 +25,9 @@ export default function HomeScreen({ onCreate }) {
         <input
           id="max-amount"
           className={`input ${error ? 'input--error' : ''}`}
-          type="number"
-          inputMode="numeric"
-          min="24"
-          step="1"
-          placeholder="Ej.: 24"
+          type="text"
+          inputMode="decimal"
+          placeholder="Ej.: 10 o 8,50"
           autoComplete="off"
           value={value}
           onChange={(e) => {
@@ -40,8 +38,8 @@ export default function HomeScreen({ onCreate }) {
           aria-describedby={error ? 'max-hint max-error' : 'max-hint'}
         />
         <p id="max-hint" className="hint">
-          Mínimo 24 €: cada uno de los 24 días tiene un importe distinto en euros enteros. Con 24 €
-          ahorrarás 300 € en total.
+          Elige la cantidad que quieras, con o sin céntimos. Si es menor de 24 €, los importes
+          llevarán céntimos (por ejemplo, 8,50 €) para que los 24 días sean distintos.
         </p>
         {error && (
           <p id="max-error" className="error" role="alert">

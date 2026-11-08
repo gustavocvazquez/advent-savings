@@ -1,13 +1,23 @@
 /** Utilidades de formato en español. */
 
-const euroFormatter = new Intl.NumberFormat('es-ES', {
+const euroWhole = new Intl.NumberFormat('es-ES', {
   style: 'currency',
   currency: 'EUR',
   maximumFractionDigits: 0,
 });
 
-/** 12 -> "12 €" */
-export const formatEuro = (amount) => euroFormatter.format(amount);
+const euroCents = new Intl.NumberFormat('es-ES', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+/** 12 -> "12 €"; 8.5 -> "8,50 €" (solo muestra céntimos si los hay). */
+export function formatEuro(amount) {
+  const cents = Math.round(amount * 100);
+  return (cents % 100 === 0 ? euroWhole : euroCents).format(cents / 100);
+}
 
 /** 5 -> "5 de diciembre" */
 export const dayLabel = (day) => `${day} de diciembre`;

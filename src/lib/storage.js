@@ -2,7 +2,7 @@
  * Persistencia local (localStorage). Todo va protegido con try/catch porque
  * localStorage puede lanzar excepciones (modo privado, cuota, datos bloqueados).
  */
-import { TOTAL_DAYS } from './calendar.js';
+import { TOTAL_DAYS, toCents } from './calendar.js';
 
 const STATE_KEY = 'advent-savings:v1';
 const SIM_KEY = 'advent-savings:sim-day';
@@ -10,12 +10,17 @@ const SIM_KEY = 'advent-savings:sim-day';
 /** Comprueba que un objeto guardado tiene la forma esperada (datos corruptos -> false). */
 export function isValidState(s) {
   if (!s || typeof s !== 'object') return false;
-  if (!Number.isInteger(s.year) || !Number.isInteger(s.maxAmount)) return false;
+  // Los importes son euros con hasta 2 decimales (los calendarios antiguos, con
+  // euros enteros, siguen siendo válidos).
+  const isMoney = (v) =>
+    typeof v === 'number' && Number.isFinite(v) && v > 0 && Math.abs(v * 100 - toCents(v)) < 1e-7;
+
+  if (!Number.isInteger(s.year) || !isMoney(s.maxAmount)) return false;
 
   const a = s.amounts;
   if (!Array.isArray(a) || a.length !== TOTAL_DAYS) return false;
-  if (!a.every((v) => Number.isInteger(v) && v >= 1 && v <= s.maxAmount)) return false;
-  if (new Set(a).size !== a.length) return false;
+  if (!a.every((v) => isMoney(v) && toCents(v) <= toCents(s.maxAmount))) return false;
+  if (new Set(a.map(toCents)).size !== a.length) return false;
 
   if (!s.completed || typeof s.completed !== 'object' || Array.isArray(s.completed)) return false;
   return Object.keys(s.completed).every((key) => {

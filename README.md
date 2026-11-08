@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Advent Savings 🎄
 
 Calendario de ahorro de adviento en español. Introduces una cantidad máxima diaria y la app genera
@@ -26,12 +25,17 @@ la versión de producción y permite usarla sin conexión.
 
 ## Reglas de los importes
 
-- 24 importes **enteros**, **distintos** entre sí, entre 1 € y la cantidad máxima.
-- Con 24 € salen exactamente los valores 1–24, mezclados al azar (total previsto: 300 €).
-- Con menos de 24 € la app **avisa** de que hay que introducir al menos 24 €, porque no existen 24
-  enteros distintos por debajo de ese valor.
-- La asignación se genera una vez y se guarda: no cambia al recargar.
-- El máximo permitido es 100.000 €.
+Puedes introducir cualquier cantidad máxima diaria (con coma o punto, hasta dos decimales), por ejemplo
+`10`, `8,50` o `30`. Mínimo: 0,24 € (24 importes distintos de al menos 0,01 €); máximo: 100.000 €.
+
+- Se generan 24 importes **distintos** entre 0,01 € y tu máximo; ninguno lo supera.
+- **24 € o más:** euros enteros. Con 24 € salen exactamente los valores 1–24, mezclados (total: 300 €).
+- **Menos de 24 €:** no hay 24 euros enteros distintos, así que se usan céntimos, con el salto más
+  "redondo" posible: 0,50 € (desde 12 €), 0,25 € (con 10 € salen importes como 8,50 o 3,25),
+  0,10 €, 0,05 € y 0,01 €.
+- La asignación se genera una vez y se guarda: no cambia al recargar. Los calendarios guardados con
+  la versión anterior (euros enteros) siguen funcionando.
+- Todo el dinero se calcula en céntimos internamente para evitar errores de coma flotante.
 
 ## Cómo se usa
 
@@ -100,7 +104,3 @@ public/
   Escape, barra de progreso con `role="progressbar"`, mensajes con `role="alert"`/`status`, objetivos
   táctiles de al menos 44 px y respeto de `prefers-reduced-motion` (se desactivan nieve, confeti y
   animaciones).
-=======
-# advent-savings
-App de Ahorro utilizando un Calendario de Adviento
->>>>>>> 7280a7c296ea7da5a353d3ec0efa044fc844ca1f
