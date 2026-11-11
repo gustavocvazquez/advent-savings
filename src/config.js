@@ -1,10 +1,9 @@
 /**
  * Configuración de la app.
  *
- * PAYPAL_USER: tu nombre de usuario de PayPal.Me (lo que va después de paypal.me/).
- *   Ejemplo: si tu enlace es https://www.paypal.me/mariaperez, escribe 'mariaperez'.
- *   Mientras esté vacío, la tarjeta "Invítame a un café" no se muestra.
- * COFFEE_PRICE: importe sugerido en euros (el precio de un café).
+ * KOFI_USER: nombre de usuario de tu página de Ko-fi (lo que va después de ko-fi.com/).
+ *   Ejemplo: si tu página es https://ko-fi.com/adventsavings, escribe 'adventsavings'.
+ *   Si lo dejas vacío (''), la tarjeta "Invítame a un café" no se muestra
+ *   (útil, por ejemplo, para una versión de Google Play sin enlaces de donación).
  */
-export const PAYPAL_USER = 'gustavocvazquez';
-export const COFFEE_PRICE = 2;
+export const KOFI_USER = 'adventsavings';

@@ -3,6 +3,7 @@ import CalendarScreen from './components/CalendarScreen.jsx';
 import DayModal from './components/DayModal.jsx';
 import Header from './components/Header.jsx';
 import HomeScreen from './components/HomeScreen.jsx';
+import PrivacyLink from './components/PrivacyLink.jsx';
 import { CalendarIcon, ChartIcon } from './components/Icons.jsx';
 import ProgressPanel from './components/ProgressPanel.jsx';
 import { useAdvent } from './hooks/useAdvent.js';
@@ -61,6 +62,7 @@ export default function App() {
         <Header />
         <main className="main">
           <HomeScreen onCreate={handleCreate} />
+          <PrivacyLink />
         </main>
       </div>
     );
@@ -108,6 +110,7 @@ export default function App() {
             onReset={handleReset}
           />
         )}
+        <PrivacyLink />
       </main>
 
       <nav className="tabbar" aria-label="Navegación principal">

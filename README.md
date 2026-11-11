@@ -55,10 +55,17 @@ muestra un aviso con el botón "Salir".
 
 ## Botón "Invítame a un café"
 
-En la pestaña Progreso hay una tarjeta con un enlace a PayPal.Me con el precio de un café ya
-rellenado (3 €, editable por quien paga). Para activarla, abre `src/config.js` y escribe tu usuario de
-PayPal.Me en `PAYPAL_USER` (si tu enlace es `paypal.me/mariaperez`, pon `'mariaperez'`). Con el valor
-vacío la tarjeta no se muestra. El importe sugerido se cambia en `COFFEE_PRICE`.
+En la pestaña Progreso hay una tarjeta con un enlace a la página de Ko-fi
+(`https://ko-fi.com/adventsavings`). El usuario se configura en `src/config.js` (`KOFI_USER`). Si lo
+dejas vacío, la tarjeta no se muestra; es lo más seguro para una versión de Google Play, porque su
+política sobre enlaces de donación externos puede afectar a la revisión.
+
+## Política de privacidad
+
+La política está en `public/privacidad.html` y se publica junto con la app (por ejemplo,
+`https://gustavocvazquez.github.io/privacidad.html`). La app la enlaza desde el pie de las pantallas.
+**Antes de publicar**, abre el archivo y sustituye `[TU NOMBRE]` y `[TU CORREO]` (aparecen varias veces)
+por tus datos reales. Google Play pide esta URL en la ficha de la app.
 
 ## Arquitectura
 
@@ -67,7 +74,7 @@ src/
 ├── main.jsx                 Punto de entrada, ErrorBoundary y registro del service worker
 ├── App.jsx                  Raíz: elige pantalla, pestañas y diálogo del día
 ├── styles.css               Estilos (mobile-first, variables de la paleta navideña)
-├── config.js                Usuario de PayPal.Me e importe del café
+├── config.js                Usuario de Ko-fi
 ├── hooks/
 │   ├── useAdvent.js         TODO el estado y las acciones (crear, marcar, reiniciar, modo prueba)
 │   └── useModalA11y.js      Foco, Escape y bloqueo de scroll para el diálogo
@@ -82,11 +89,13 @@ src/
     ├── Door.jsx             Una puerta (bloqueada / disponible / abierta / pendiente)
     ├── DayModal.jsx         Detalle del día, animación de apertura y celebración
     ├── ProgressPanel.jsx    Barra de progreso, totales y lista de días
-    ├── CoffeeCard.jsx       Tarjeta "Invítame a un café" (PayPal.Me)
+    ├── CoffeeCard.jsx       Tarjeta "Invítame a un café" (Ko-fi)
+    ├── PrivacyLink.jsx      Enlace a la política de privacidad
     ├── SettingsPanel.jsx    Modo prueba y reinicio con confirmación
     ├── Header.jsx, Snow.jsx, Confetti.jsx, Icons.jsx, ErrorBoundary.jsx
 public/
 ├── manifest.webmanifest, icon.svg, sw.js    PWA
+├── privacidad.html                          Política de privacidad
 ```
 
 **Decisiones de diseño**
