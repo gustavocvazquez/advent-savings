@@ -52,3 +52,28 @@ export function ChartIcon({ size = 22 }) {
     </svg>
   );
 }
+
+export function CoffeeIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"
+        fill="currentColor"
+      />
+      <path
+        d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8 2.5c-1 1 1 2 0 3.5M12 2.5c-1 1 1 2 0 3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}

@@ -273,6 +273,13 @@ p {
   border-color: var(--gold);
 }
 
+.btn--coffee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
 .btn--small {
   display: inline-block;
   width: auto;
